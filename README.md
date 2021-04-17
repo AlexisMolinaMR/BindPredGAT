@@ -1,2 +1,2 @@
-# BindPredGAT
-Implementation of a Graph Attention Network for binding affinity/energy prediction.
+# BindPredGNN
+Implementation of a Graph Neural Networks for binding affinity/energy prediction.
