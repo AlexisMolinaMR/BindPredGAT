@@ -1,0 +1,7 @@
+path: '/home/vant/data/'
+output: "/home/vant/data/"
+ligand_name: 'LIG'
+selection_radius: 20
+center: 'geometric'
+decay_function: 'expo'
+nodes: 'atoms'
