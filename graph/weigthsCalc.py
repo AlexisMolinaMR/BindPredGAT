@@ -50,13 +50,13 @@ def atomSubgraphsWeights(atom_interactions, types, decay_function, ligand_atom_t
 
     if decay_function == 'expo':
         for inter in atom_interactions:
-            type_weight = (np.exp(-abs(inter[-1])/3), "{}-{}".format(inter[2], inter[1]))
+            type_weight = (np.exp(-abs(inter[-2])/3), "{}-{}".format(inter[2], inter[1] + '_' + inter[-1]))
             weights.append(type_weight)
             type_weight = ()
 
     elif decay_function == 'lorentz':
         for inter in atom_interactions:
-            type_weight = ((1/1 + (abs(inter[-1])/3)**5), "{}-{}".format(inter[2], inter[1]))
+            type_weight = ((1/1 + (abs(inter[-2])/3)**5), "{}-{}".format(inter[2], inter[1] + '_' + inter[-1]))
             weights.append(type_weight)
             type_weight = ()
 

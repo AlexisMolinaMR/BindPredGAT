@@ -45,7 +45,7 @@ def elementsDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (binding_pocket[i][-1], binding_pocket[i][1], ligand[j]
-                                                [-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                                                [-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
             except:
@@ -55,7 +55,7 @@ def elementsDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (binding_pocket[i][-1], binding_pocket[i][1], ligand[j]
-                                            [-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                                            [-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -106,7 +106,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
                 else:
@@ -116,7 +116,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NH1', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NH1', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -128,7 +128,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH1E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH1E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -139,7 +139,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH2G', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH2G', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -151,7 +151,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -163,7 +163,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -174,7 +174,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -185,7 +185,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CF', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CF', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -196,7 +196,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CY', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CY', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -207,7 +207,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'C5', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'C5', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -218,7 +218,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'C5W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'C5W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -229,7 +229,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -241,7 +241,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH0', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -252,7 +252,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -264,7 +264,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -275,7 +275,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH2P', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -287,7 +287,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CH2E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CH2E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
                 else:
@@ -297,7 +297,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CR1W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CR1W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -308,7 +308,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'CH3E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'CH3E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -319,7 +319,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'CR1E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'CR1E', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -331,7 +331,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'OH1', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'OH1', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -342,7 +342,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'OC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'OC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -354,7 +354,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'OC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'OC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -365,7 +365,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'OS', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'OS', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -376,7 +376,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'NH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'NH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -388,7 +388,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NH1S', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -399,7 +399,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -411,7 +411,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NC2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -423,7 +423,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NH2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NH2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -435,7 +435,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CR1W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CR1W', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -447,7 +447,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CY2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CY2', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -459,7 +459,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'SC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'SC', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -470,7 +470,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'SM', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'SM', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -481,7 +481,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'CW', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'CW', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -493,7 +493,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CW', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CW', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -504,7 +504,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CR1H', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CR1H', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -516,7 +516,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'CRHH', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'CRHH', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -528,7 +528,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NH3', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NH3', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -540,7 +540,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                     else:
                         distance_interaction = (
-                            binding_pocket[i][-1], 'NP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                            binding_pocket[i][-1], 'NP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                         atom_interactions.append(distance_interaction)
                         distance_interaction = ()
 
@@ -551,7 +551,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'CP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'CP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -562,7 +562,7 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'OP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'OP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
 
@@ -573,9 +573,10 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
 
                 else:
                     distance_interaction = (
-                        binding_pocket[i][-1], 'OP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1))
+                        binding_pocket[i][-1], 'OP', ligand[j][-1], ligand[j][1], binding_pocket[i][0], ligand[j][0], math.sqrt(x1 + y1 + z1), binding_pocket[i][2])
                     atom_interactions.append(distance_interaction)
                     distance_interaction = ()
+
 
     for i in sorted(protein_atom_types):
         for j in sorted(ligand_atom_types):
