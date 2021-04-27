@@ -43,8 +43,9 @@ def main():
                 final_weigths, atom_combinations = elementSubgraphsWeights(atom_interactions=interactions, types=elements, decay_function=param_args['decay_function'],
                                                                            ligand_atom_types=ligand_elements, protein_atom_types=protein_elements)
 
-            graph = graph_builder(weights=final_weigths)
-            visual_graph(graph, out=param_args['output'], run=param_args['run'])
+            graph_strength, graph_distance = graph_builder(weights=final_weigths)
+            visual_graph(graph_strength, out=param_args['output'], run=param_args['run'] + '_graph_strength')
+            visual_graph(graph_distance, out=param_args['output'], run=param_args['run'] + '_graph_distance')
 
     return 0
 
