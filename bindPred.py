@@ -3,9 +3,12 @@ import sys
 import yaml
 
 from dataParser.pdbParse import read_PDB, binding_pocket_selection, ligand_parse_write, ligand_atom_type_calc
+
 from graph.distComp import elementsDistanceCalc, atomTypesDistanceCalc
 from graph.weigthsCalc import atomSubgraphsWeights, elementSubgraphsWeights
+from graph.build_graph import graph_builder
 
+from utils.utils import visual_graph
 
 def parseyaml():
 
@@ -19,7 +22,7 @@ def main():
     param_args = parseyaml()
 
     for file in os.listdir(param_args['path']):
-        if file.endswith('.pdb'):
+        if file.endswith('.pdb') and not file.startswith('lig'):
             system, prody_system = read_PDB(param_args['path'] + file, param_args['ligand_name'])
             selected_protein, selected_ligand = binding_pocket_selection(system, prody_system, param_args['ligand_name'], param_args['selection_radius'], param_args['center'])
 
@@ -40,7 +43,8 @@ def main():
                 final_weigths, atom_combinations = elementSubgraphsWeights(atom_interactions=interactions, types=elements, decay_function=param_args['decay_function'],
                                                                            ligand_atom_types=ligand_elements, protein_atom_types=protein_elements)
 
-    print(final_weigths)
+            graph = graph_builder(weights=final_weigths)
+            visual_graph(graph, out=param_args['output'], run=param_args['run'])
 
     return 0
 

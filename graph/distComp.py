@@ -94,9 +94,9 @@ def atomTypesDistanceCalc(binding_pocket, ligand):
             at_count += 1
         for j in range(i, len(ligand)):
 
-            x1 = math.pow(float(ligand[j][2]) - float(binding_pocket[i][2]), 2)
-            y1 = math.pow(float(ligand[j][3]) - float(binding_pocket[i][3]), 2)
-            z1 = math.pow(float(ligand[j][4]) - float(binding_pocket[i][4]), 2)
+            x1 = math.pow(float(ligand[j][2]) - float(binding_pocket[i][3]), 2)
+            y1 = math.pow(float(ligand[j][3]) - float(binding_pocket[i][4]), 2)
+            z1 = math.pow(float(ligand[j][4]) - float(binding_pocket[i][5]), 2)
 
             if binding_pocket[i][1] == 'NH1':
                 if binding_pocket[i][0] == 'ARG':

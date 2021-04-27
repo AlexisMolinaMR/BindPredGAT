@@ -34,6 +34,8 @@ def read_PDB(path, lig_name):
     return system, prody_system
 
 def ligand_parse_write(path, out, lig_name):
+    '''
+    '''
 
     pose = parsePDB(path)
 
@@ -105,11 +107,11 @@ def binding_pocket_selection(system, prody_system, ligand_name, selection_radius
 
                 if (x1 + y1 + z1) <= selection_radius**2:
                     if line[-3:].strip() in two_let_atom_code:
-                        atom = (line[17:20].strip(), line[12:16].strip(), line[30:38].strip(
+                        atom = (line[17:20].strip(), line[12:16].strip(), line[7:11].strip(), line[30:38].strip(
                         ), line[38:46].strip(), line[46:54].strip(), line[-3:].strip())
 
                     else:
-                        atom = (line[17:20].strip(), line[12:16].strip(), line[30:38].strip(
+                        atom = (line[17:20].strip(), line[12:16].strip(), line[7:11].strip(), line[30:38].strip(
                         ), line[38:46].strip(), line[46:54].strip(), line[-3:].strip()[0])
                     binding_pocket.append(atom)
                     atom = ()
@@ -179,10 +181,10 @@ def ligand_atom_type_calc(ligand, ligand_path):
 
         if Aromacity:
             ligand[index] = ligand[index] + \
-                (symbol + '_' + Hybridization + '_AROM',)
+                (symbol + '_' + Hybridization + '_AROM_' + str(index),)
         else:
             ligand[index] = ligand[index] + \
-                (symbol + '_' + Hybridization,)
+                (symbol + '_' + Hybridization + '_' + str(index),)
 
         index += 1
 
