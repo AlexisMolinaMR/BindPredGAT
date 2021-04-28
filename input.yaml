@@ -6,3 +6,7 @@ selection_radius: 20
 center: 'geometric'
 decay_function: 'expo'
 nodes: 'atoms'
+
+batch_size: 32
+learning_rate: 0.01
+epochs: 400

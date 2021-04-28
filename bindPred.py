@@ -7,6 +7,7 @@ from dataParser.pdbParse import read_PDB, binding_pocket_selection, ligand_parse
 from graph.distComp import elementsDistanceCalc, atomTypesDistanceCalc
 from graph.weigthsCalc import atomSubgraphsWeights, elementSubgraphsWeights
 from graph.build_graph import graph_builder
+from graph.graph_descriptors import compute_adjacency_matrix, compute_laplacian_matrix
 
 from utils.utils import visual_graph
 
@@ -46,6 +47,10 @@ def main():
             graph_strength, graph_distance = graph_builder(weights=final_weigths)
             visual_graph(graph_strength, out=param_args['output'], run=param_args['run'] + '_graph_strength')
             visual_graph(graph_distance, out=param_args['output'], run=param_args['run'] + '_graph_distance')
+
+            adj_matrix = compute_adjacency_matrix(graph_strength)
+            lap_matrix = compute_laplacian_matrix(graph_strength)
+
 
     return 0
 
