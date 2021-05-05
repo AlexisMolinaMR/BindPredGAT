@@ -4,93 +4,65 @@ import tensorflow as tf
 from tensorflow.keras.losses import Huber, MeanSquaredError
 from tensorflow.keras.metrics import mean_squared_error, mean_absolute_error
 from tensorflow.keras.optimizers import Adam, Nadam
+from tensorflow.keras.layers import Dense, Input
+from tensorflow.keras.models import Model
 
 from spektral.models import GeneralGNN
+from spektral.data import DisjointLoader, BatchLoader
+from spektral.layers import ECCConv, GlobalSumPool, GeneralConv, GCNConv
 
-
-class GraphNeuralNetwork(data):
+class GraphNeuralNetwork():
     '''
     '''
-    def __init__(self, F, S, n_out):
+    def __init__(self, learning_rate, batch_size, epochs, train_loader, test_loader, data, **kwargs):
 
-        self.F = data.n_node_features  # Dimension of node features
-        self.S = data.n_edge_features  # Dimension of edge features
-        self.n_out = data.n_labels  # Dimension of the target
+        self.learning_rate = learning_rate
+        self.batch_size = batch_size
+        self.epochs = epochs
+        self.loader_tr = train_loader
+        self.loader_te = test_loader
+        self.data = data
 
-    def GNN():
+        super().__init__(**kwargs)
+
+    def train_GNN(self):
         '''
         '''
 
-        X_in = Input(shape=(F,), name="X_in")
-        A_in = Input(shape=(None,), sparse=True, name="A_in")
-        E_in = Input(shape=(S,), name="E_in")
-        I_in = Input(shape=(), name="segment_ids_in", dtype=tf.int32)
+        def GNN():
+            '''
+            '''
 
-        X_1 = ECCConv(32, activation="relu")([X_in, A_in, E_in])
-        X_2 = ECCConv(32, activation="relu")([X_1, A_in, E_in])
-        X_3 = GlobalSumPool()([X_2, I_in])
-        output = Dense(n_out)(X_3)
+            # Build model
+            N_in = Input(shape=(None, self.data.n_node_features))
+            A_in = Input(shape=(None, None))
+        #    E_in = Input(shape=(None, 1))
 
-        # Build model
-        model = Model(inputs=[X_in, A_in, E_in, I_in], outputs=output)
-        opt = Adam(lr=learning_rate)
-        loss_fn = MeanSquaredError()
+            X_1 = GCNConv(32, activation="relu")([N_in, A_in])
+        #    X_2 = GCNConv(31, activation="relu")([X_1, A_in])
+            X_3 = GlobalSumPool()([X_1])
 
+            output = Dense(self.data.n_labels)(X_3)
 
-    def train_step(inputs, target):
+            model = Model(inputs=[N_in, A_in], outputs=output)
+            optimizer = Adam(lr=self.learning_rate)
+            model.compile(optimizer=optimizer, loss="mae")
+
+            model.summary()
+
+            return model, optimizer
+
+        model, optimizer = GNN()
+
+        split = int(0.8 * len(self.data))
+        data_tr, data_te = self.data[:split], self.data[split:]
+
+        loader_tr = BatchLoader(data_tr, batch_size=self.batch_size)
+
+        model.fit(loader_tr.load(), steps_per_epoch=loader_tr.steps_per_epoch, epochs=self.epochs)
+
+    def evaluate(self):
         '''
         '''
 
-        with tf.GradientTape() as tape:
-
-            predictions = model(inputs, training=True)
-            loss = loss_fn(target, predictions)
-            loss += sum(model.losses)
-
-            mse = mean_squared_error(target, predictions)
-            mae = mean_absolute_error(target, predictions)
-
-        gradients = tape.gradient(loss, model.trainable_variables)
-        opt.apply_gradients(zip(gradients, model.trainable_variables))
-
-        return loss, mse, mae
-
-    def train_GNN():
-        '''
-        '''
-
-        print("\nFitting model\n")
-        current_batch = 0
-        model_loss = 0
-
-        for batch in loader_train:
-            outs = train_step(*batch)
-
-            model_loss += outs[0]
-            current_batch += 1
-
-            mae = outs[2]
-
-            if current_batch == loader_tr.steps_per_epoch:
-
-                print("Loss: {}\t|\t MAE: {}".format(model_loss / loader_tr.steps_per_epoch, mae))
-                model_loss = 0
-                current_batch = 0
-
-    def evaluate():
-        '''
-        '''
-
-        print("\nTesting model\n")
-        model_loss = 0
-
-        for batch in loader_val:
-
-            inputs, target = batch
-            predictions = model(inputs, training=False)
-            model_loss += loss_fn(target, predictions)
-
-        model_loss /= loader_te.steps_per_epoch
-        mae = mean_absolute_error(target, predictions)
-
-        print("Done. Test loss: {}\t|\t MAE: {}".format(model_loss, mae))
+        model.evaluate(self.loader_te.load(), steps=self.loader_te.steps_per_epoch)
