@@ -4,11 +4,12 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 
-from sklearn.preprocessing import MultiLabelBinarizer
+from numpy.linalg import matrix_rank
 
 from scipy.sparse import csr_matrix
 
 from spektral.data import Graph, Dataset
+from spektral.utils import normalized_adjacency, gcn_filter
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
@@ -40,13 +41,17 @@ class MyDataset(Dataset):
     """
 
     def __init__(self, path, out, target, **kwargs):
+
         self.in_path = path
         self.out_path = out
         self.target = pd.read_csv(target)
 
         super().__init__(**kwargs)
 
+
+
     def read(self):
+
         def make_graph(file):
 
             #Nodes
@@ -56,19 +61,24 @@ class MyDataset(Dataset):
             #Encode Nodes
             label = LabelEncoder()
             int_data = label.fit_transform(nodes)
-            int_data = int_data.reshape(len(int_data), 1)
+            int_data = int_data.reshape(1, -1)
 
             onehot_data = OneHotEncoder(sparse=False)
             onehot_nodes = onehot_data.fit_transform(int_data)
 
             #Edges
             a = np.load(self.out_path + file.split('.')[0] + '_adj.npy')
-            a = csr_matrix(a, dtype=np.float32)
+        #    a[a > 0] = 1
+        #    a = normalized_adjacency(a, symmetric=True)
+        #    a = gcn_filter(a, symmetric=True)
+            a = csr_matrix(a, dtype=np.int)
 
             #Targets
             y = float(self.target.loc[self.target['ligand'] == file.split('.')[0]]['bindingEnergy'])
 
-            return Graph(x=onehot_nodes, a=a, y=y)
+        #    print(y)
+
+            return Graph(x=onehot_nodes[0], a=a, y=[y])
 
         # We must return a list of Graph objects
 

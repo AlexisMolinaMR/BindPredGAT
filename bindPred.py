@@ -1,11 +1,17 @@
 import os
-import sys
-import yaml
-
-import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
+import warnings
+warnings.filterwarnings("ignore")
+
+import os
+import sys
+import yaml
+import timeit
+
+import matplotlib.pyplot as plt
 
 from dataParser.pdbParse import read_PDB, binding_pocket_selection, ligand_parse_write, ligand_atom_type_calc
 
@@ -16,9 +22,13 @@ from graph.graph_descriptors import compute_adjacency_matrix, compute_laplacian_
 
 from models.GNN import gnn
 
-from utils.utils import visual_graph, save_graph, read_graph, data_loaders
+from utils.utils import visual_graph, save_graph, read_graph, data_loaders, loss_plot, r_squared
 
 from spektral.transforms.normalize_adj import NormalizeAdj
+
+from keras.optimizers import Adam, Nadam
+from keras.callbacks import ModelCheckpoint
+
 
 def parseyaml():
 
@@ -28,10 +38,11 @@ def parseyaml():
     return params
 
 def main():
+    start = timeit.default_timer()
 
     param_args = parseyaml()
 
-    if not param_args['fitting']:
+    if 'fitting' not in param_args or param_args['fitting'] == False:
 
         for file in os.listdir(param_args['path']):
             if file.endswith('.pdb') and not file.startswith('lig'):
@@ -63,9 +74,10 @@ def main():
                 save_graph(graph=graph_strength, out=param_args['output'] + file)
 
                 adj_matrix = compute_adjacency_matrix(graph_strength, out=param_args['output'] + file)
-                lap_matrix = compute_laplacian_matrix(graph_strength)
 
-    if param_args['fitting'] == 'GNN':
+            #    lap_matrix = compute_laplacian_matrix(graph_strength)
+
+    elif param_args['fitting'] == 'GNN':
 
         dataset = MyDataset(path=param_args['path'], out=param_args['output'], target=param_args['target'], transforms=NormalizeAdj())
 
@@ -74,12 +86,20 @@ def main():
         tr_loader, te_loader = data_loaders(data=dataset, batch_size=param_args['batch_size'],
                                 epochs=param_args['epochs'])
 
-        GNN = gnn.GraphNeuralNetwork(learning_rate=param_args['learning_rate'], batch_size=param_args['batch_size'],
-                                epochs=param_args['epochs'], train_loader=tr_loader, test_loader=te_loader, data=dataset)
+        GNN = gnn.GraphNeuralNetwork(2000)
 
-        GNN.train_GNN()
+        opt = Nadam(learning_rate=param_args['learning_rate'])
 
-        GNN.evaluate()
+        GNN.compile(optimizer = opt, loss= 'huber', metrics = ['mean_absolute_error', r_squared])
+
+        history = GNN.fit(tr_loader.load(), steps_per_epoch=tr_loader.steps_per_epoch, epochs=param_args['epochs'])
+        loss_plot(history, param_args['output'] + '_' + param_args['fitting'])
+
+        GNN.summary()
+
+        GNN.evaluate(te_loader.load(), steps=te_loader.steps_per_epoch)
+
+    print(f"\nExecuted in {datetime.now()-start}")
 
     return 0
 
