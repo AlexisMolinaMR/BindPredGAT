@@ -6,7 +6,7 @@ Implementation of a Graph Neural Networks for binding affinity/energy prediction
 **Parameters**
 
 ```
-#control file for BindPred - Graph statistics
+#control file for BindPred
 
 path: '/input/path/folder/'
 output: '/output/path/folder/'
