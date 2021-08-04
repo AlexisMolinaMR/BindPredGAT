@@ -1,7 +1,7 @@
 # BindPredGNN
 Implementation of a Graph Neural Networks for binding affinity/energy prediction.
 
-### Generate graph statistics (_graph_)
+### Generate graphs 
 
 **Parameters**
 
@@ -18,7 +18,7 @@ decay_function:
 nodes: 
 ``` 
 
-### Fitting graph statistics (_fitting_)
+### Fitting graph 
 
 **Parameters**
 
