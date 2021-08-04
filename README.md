@@ -6,65 +6,27 @@ Implementation of a Graph Neural Networks for binding affinity/energy prediction
 **Parameters**
 
 ```
-#control file for PeleAI3D - Graph statistics
+#control file for BindPred - Graph statistics
 
-path: 
-output: 
-run_name: 
-ligand_name: 
-selection_radius: 
-center: 
-decay_function:
-nodes: 
-``` 
+path: '/input/path/folder/'
+output: '/output/path/folder/'
+ligand_name: 'LIG'
+selection_radius: 20
+center: 'geometric'
+nodes: 'atoms'
+decay_function: 'expo'
+fitting: 'GNN'
+target: '/path/to/target.csv'
+batch_size: 10
+epochs: 45
+learning_rate: 0.01
 
-### Fitting graph 
-
-**Parameters**
-
-```
-#control file for PeleAI3D - Fitting a model
-
-path_graph: 
-output: 
-test_size:
-seed: 
-task: 
-cpus: 
-scaler: 
-algorithm: 
-``` 
-
-### Pipelining (_pipeline_)
-
-**Parameters**
-
-```
-#control file for PeleAI3D - Pipeline
-path: 
-output: 
-run_name: 
-ligand_name: 
-selection_radius: 
-center: 
-decay_function:
-nodes: 
-# ------------------------------------
-#pipe: True
-#target: 
-# ------------------------------------
-test_size: 
-seed: 
-task: 
-cpus: 
-scaler: 
-algorithm: 
 ``` 
 
 ### Execution
 
-You may pass the _input.yaml_ file to the ```peleAI3d.py``` as follows:
+You may pass the _input.yaml_ file to the ```bindPred.py``` as follows:
 
 ```
-python3 peleAI3d.py input.yaml
+python3 bindPred.py input.yaml
 ```
